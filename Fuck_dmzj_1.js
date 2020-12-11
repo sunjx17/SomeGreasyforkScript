@@ -50,6 +50,7 @@
         console.log(e);
     });
     //******************************************************列表部分
+    var mytitle=$(".anim_title_text").text();
     $('div.middleright_mr .icorss_acg').remove();
     var as=$('div.middleright_mr').eq(0).find('li>a');
     $('div.middleright_mr').eq(0).before('<div id="ctt"><i id="all"></i><a id="has"></a></div>')
@@ -115,6 +116,7 @@ $list=[
                 val0+=list[p];
             }
             val0+=`];
+
 $opts = array (
 	'http' => array (
 	'method' => 'GET',
@@ -125,6 +127,7 @@ $org="";
 $context = stream_context_create($opts);
 
 foreach($list as $tt =>$ims){
+    $tt=preg_replace('/${mytitle}(.+)-.+-.+/','$1',$tt);
 	if(!is_dir($tt))mkdir($tt);
 	echo $tt,PHP_EOL,"Y/any";
 	$yn = trim(fgets(STDIN));
